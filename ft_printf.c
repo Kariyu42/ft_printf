@@ -6,11 +6,11 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:30:21 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 09:55:58 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:43:09 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "includes/ft_printf.h"
 
 t_flags	*ft_declare_tab(t_flags *tab)
 {
@@ -49,9 +49,9 @@ static void	ft_convert_format(char c, t_flags *tab)
 		ft_print_p(tab);
 	else if (c == 'd' || c == 'i')
 		ft_print_di(tab);
-	/*else if (c == 'u')
-		ft_print_unsigned(tab);
-	else if (c == 'x')
+	else if (c == 'u')
+		ft_print_uint(tab);
+	/*else if (c == 'x')
 	{
 		if (tab->hash)
 			tab->hash = 2;

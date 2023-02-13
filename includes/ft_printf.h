@@ -6,20 +6,20 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:04:33 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 09:56:24 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:44:24 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+/* libft header */
+# include "../libft/libft.h"
 /* libraries */
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
 
-/* libft header */
-# include "../libft/libft.h"
 
 /* struct */
 typedef struct s_flags
@@ -51,7 +51,11 @@ void	ft_print_p(t_flags *tab);
 /* print d & i + utils */
 void	ft_print_di(t_flags *tab);
 void	ft_check_addflags(int sign, t_flags *tab);
+/* print u */
+void	ft_print_uint(t_flags *tab);
+
 /* others */
 int		ft_locate_format(char *s1, int c);
+int		precision_control(int len, t_flags *tab);
 
 #endif

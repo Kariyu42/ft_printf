@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:08:00 by kquetat-          #+#    #+#             */
-/*   Updated: 2022/11/22 19:50:44 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:40:22 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,7 @@ int	ft_lendigit(int n)
 	return (i);
 }
 
-char	*ft_isminus(int n)
-{
-	int		i;
-	int		j;
-	char	*str;
-
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	i = 0;
-	i = ft_lendigit(n) + 1;
-	j = i;
-	str = malloc(sizeof(char) * (i + 1));
-	if (!str)
-		return (0);
-	i -= 1;
-	n *= -1;
-	while (n)
-	{
-		str[i] = n % 10 + 48;
-		n = n / 10;
-		i--;
-	}
-	str[j] = '\0';
-	str[i] = '-';
-	return (str);
-}
-
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
 	int		i;
 	int		j;
@@ -61,13 +34,16 @@ char	*ft_itoa(int n)
 	i = 0;
 	if (!n)
 		return (ft_strdup("0"));
-	if (n < 0)
-		return (ft_isminus(n));
 	i = ft_lendigit(n);
 	j = i;
 	str = malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (0);
+	if (n < 0)
+	{
+		str[0] = '-';
+		n *= -1;
+	}
 	i -= 1;
 	while (n)
 	{

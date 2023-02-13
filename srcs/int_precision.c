@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_numflags.c                                     :+:      :+:    :+:   */
+/*   int_precision.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 10:48:53 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 19:25:47 by kquetat-         ###   ########.fr       */
+/*   Created: 2023/02/13 12:34:34 by kquetat-          #+#    #+#             */
+/*   Updated: 2023/02/13 12:47:12 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_check_addflags(int sign, t_flags *tab)
+int	precision_control(int len, t_flags *tab)
 {
-	if (tab->space && !sign)
-		tab->len += write(1, " ", 1);
-	else if (sign)
-		tab->len += write(1, "-", 1);
-	else if ((tab->space && tab->plus && !sign) || (tab->plus && !sign))
-		tab->len += write(1, "+", 1);
+	tab->precision -= len;
+	if (tab->precision < 0)
+		tab->precision = 0;
+	return (tab->precision);
 }
