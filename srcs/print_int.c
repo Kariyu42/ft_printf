@@ -6,13 +6,13 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 23:33:08 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 19:21:30 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:51:53 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	add_zero_padd(char *tmp, int len, int sign, t_flags *tab)
+static void	add_zero_padd(char *tmp, int len, int sign, t_flags *tab)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ void	add_zero_padd(char *tmp, int len, int sign, t_flags *tab)
 	tab->len += len;
 }
 
-void	print_left_di(char *tmp, int len, int sign, t_flags *tab)
+static void	print_left_di(char *tmp, int len, int sign, t_flags *tab)
 {
 	int	i;
 	int	area;
@@ -47,7 +47,7 @@ void	print_left_di(char *tmp, int len, int sign, t_flags *tab)
 		tab->len += write(1, " ", 1);
 }
 
-void	print_wdth_di(char *tmp, int len, int sign, t_flags *tab)
+static void	print_wdth_di(char *tmp, int len, int sign, t_flags *tab)
 {
 	int	i;
 	int	area;
@@ -70,7 +70,7 @@ void	print_wdth_di(char *tmp, int len, int sign, t_flags *tab)
 	tab->len += len;
 }
 
-void	num_flags(char *tmp, int len, int sign, t_flags *tab)
+static void	num_flags(char *tmp, int len, int sign, t_flags *tab)
 {
 	if (tab->zero && !tab->precision)
 		add_zero_padd(tmp, len, sign, tab);

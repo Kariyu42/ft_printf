@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:04:33 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 19:44:24 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:56:29 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,17 @@ void	ft_print_c(t_flags *tab);
 void	ft_print_s(t_flags *tab);
 /* print p */
 void	ft_print_p(t_flags *tab);
+void	ft_base_convert(unsigned long num, t_flags *tab, char *base);
 /* print d & i + utils */
 void	ft_print_di(t_flags *tab);
 void	ft_check_addflags(int sign, t_flags *tab);
 /* print u */
 void	ft_print_uint(t_flags *tab);
-
+/* print x & X*/
+void	ft_print_hexa(t_flags *tab, char *base);
+void	hexa_zero_padd(unsigned int num, int len, t_flags *tab, char *base);
+void	hexa_left_wdth(unsigned int num, int len, t_flags *tab, char *base);
+void	hexa_wdth(unsigned int num, int len, t_flags *tab, char *base);
 /* others */
 int		ft_locate_format(char *s1, int c);
 int		precision_control(int len, t_flags *tab);

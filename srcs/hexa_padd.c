@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_unsigned.c                                   :+:      :+:    :+:   */
+/*   hexa_padd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 19:31:20 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 20:10:49 by kquetat-         ###   ########.fr       */
+/*   Created: 2023/02/13 20:42:48 by kquetat-          #+#    #+#             */
+/*   Updated: 2023/02/13 20:57:04 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	uint_pad_zero(char *str, int len, t_flags *tab)
+void	hexa_zero_padd(unsigned int num, int len, t_flags *tab, char *base)
 {
 	int	i;
 
 	i = -1;
-	ft_check_addflags(0, tab);
 	while (++i < tab->width - len)
 		tab->len += write(1, "0", 1);
-	ft_putstr_fd(str, 1);
-	tab->len += len;
+	ft_check_addflags(0, tab);
+	ft_base_convert(num, tab, base);
 }
 
-static void	uint_printleft(char *str, int len, t_flags *tab)
+void	hexa_left_wdth(unsigned int num, int len, t_flags *tab, char *base)
 {
 	int	i;
 	int	area;
@@ -39,14 +38,14 @@ static void	uint_printleft(char *str, int len, t_flags *tab)
 		tab->len += write(1, "0", 1);
 	if (!prec_pad)
 		ft_check_addflags(0, tab);
-	ft_putstr_fd(str, 1);
+	ft_base_convert(num, tab, base);
 	tab->len += len;
 	i = -1;
 	while (++i < area)
 		tab->len += write(1, " ", 1);
 }
 
-static void	uint_wdth(char *str, int len, t_flags *tab)
+void	hexa_wdth(unsigned int num, int len, t_flags *tab, char *base)
 {
 	int	i;
 	int	area;
@@ -65,31 +64,6 @@ static void	uint_wdth(char *str, int len, t_flags *tab)
 		tab->len += write(1, "0", 1);
 	if (!prec_pad)
 		ft_check_addflags(0, tab);
-	ft_putstr_fd(str, 1);
+	ft_base_convert(num, tab, base);
 	tab->len += len;
-}
-
-static void	uint_flags(char *str, int len, t_flags *tab)
-{
-	if (tab->zero && !tab->precision)
-		uint_pad_zero(str, len, tab);
-	else if (tab->minus)
-		uint_printleft(str, len, tab);
-	else
-		uint_wdth(str, len, tab);
-}
-
-void	ft_print_uint(t_flags *tab)
-{
-	unsigned int	num;
-	int				len;
-	char			*str;
-
-	num = va_arg(tab->ap, unsigned int);
-	str = ft_itoa(num);
-	len = (int)ft_strlen(str);
-	if (tab->plus || tab->space)
-		tab->width--;
-	uint_flags(str, len, tab);
-	free(str);
 }

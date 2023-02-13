@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:08:00 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 19:40:22 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:01:58 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_lendigit(int n)
 	return (i);
 }
 
-char	*ft_itoa(long n)
+char	*ft_itoa(unsigned long long n)
 {
 	int		i;
 	int		j;

@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 10:48:53 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 19:25:47 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:47:59 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,11 @@ void	ft_check_addflags(int sign, t_flags *tab)
 		tab->len += write(1, "-", 1);
 	else if ((tab->space && tab->plus && !sign) || (tab->plus && !sign))
 		tab->len += write(1, "+", 1);
+	else if (!sign && tab->hash)
+	{
+		if (tab->hash == 2)
+			tab->len += write(1, "0x", 2);
+		else if (tab->hash == 3)
+			tab->len += write(1, "0X", 2);
+	}
 }
