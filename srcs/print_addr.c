@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:50:49 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/11 23:32:03 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:57:54 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_base_convert(unsigned long num, t_flags *tab, char *base)
 		ft_base_convert(num % 16, tab, base);
 	}
 	else
-		tab->len += write(1, base[num], 1);
+		tab->len += write(1, &base[num], 1);
 }
 
 static void	print_left_p(unsigned long num, int len, t_flags *tab)

@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:30:21 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/11 23:32:54 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:55:58 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ t_flags	*ft_declare_tab(t_flags *tab)
 	return (tab);
 }
 
+int	ft_locate_format(char *s1, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i])
+	{
+		if (s1[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 static void	ft_convert_format(char c, t_flags *tab)
 {
 	if (c == 'c')
@@ -35,7 +49,7 @@ static void	ft_convert_format(char c, t_flags *tab)
 		ft_print_p(tab);
 	else if (c == 'd' || c == 'i')
 		ft_print_di(tab);
-	else if (c == 'u')
+	/*else if (c == 'u')
 		ft_print_unsigned(tab);
 	else if (c == 'x')
 	{
@@ -50,7 +64,7 @@ static void	ft_convert_format(char c, t_flags *tab)
 		ft_print_hexa(tab, "0123456789ABCDEF");
 	}
 	else if (c == '%')
-		tab->len += write(1, "%", 1);
+		tab->len += write(1, "%", 1);*/
 }
 
 static int	ft_parse_flag(t_flags *tab, const char *format, int i)

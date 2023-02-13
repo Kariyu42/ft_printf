@@ -6,7 +6,7 @@
 #    By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 12:15:28 by kquetat-          #+#    #+#              #
-#    Updated: 2023/02/13 09:49:29 by kquetat-         ###   ########.fr        #
+#    Updated: 2023/02/13 10:07:17 by kquetat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ RM		= rm -f
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-	make bonus $(LIBFT)
+	make bonus -C $(LIBFT)
 	cp libft/libft.a $(NAME)
 	ar rcs $(NAME) $(OBJS)
 
@@ -41,7 +41,7 @@ bonus:	$(NAME)
 
 clean:
 	$(RM) $(OBJS)
-	make clean $(LIBFT)
+	make clean -C $(LIBFT)
 
 fclean:	clean
 	$(RM) $(NAME)

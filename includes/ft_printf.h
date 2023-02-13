@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:04:33 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/12 12:47:23 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:56:24 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ void	ft_print_p(t_flags *tab);
 /* print d & i + utils */
 void	ft_print_di(t_flags *tab);
 void	ft_check_addflags(int sign, t_flags *tab);
+/* others */
+int		ft_locate_format(char *s1, int c);
 
 #endif
