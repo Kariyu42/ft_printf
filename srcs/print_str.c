@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:16:53 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/11 22:46:36 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:45:59 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	print_left_s(char *str, int len, t_flags *tab)
 
 static void	s_filtering(char *str, int len, t_flags *tab)
 {
-	if (tab->precision && tab->precision < len)
+	if (tab->check_precision && tab->precision < len)
 		len = tab->precision;
 	if (tab->minus)
 		print_left_s(str, len, tab);
@@ -49,7 +49,7 @@ static void	s_filtering(char *str, int len, t_flags *tab)
 void	ft_print_s(t_flags *tab)
 {
 	char	*str;
-	
+
 	str = va_arg(tab->ap, char *);
 	if (!str)
 		s_filtering("(null)", 6, tab);

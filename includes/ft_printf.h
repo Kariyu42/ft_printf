@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:04:33 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 20:56:29 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:43:55 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-
 /* struct */
 typedef struct s_flags
 {
@@ -33,6 +32,7 @@ typedef struct s_flags
 	int		minus;
 	int		space;
 	int		precision;
+	int		check_precision;
 }	t_flags;
 
 /* prototype */
@@ -44,6 +44,7 @@ void	ft_get_precision(const char *format, t_flags *tab, int i);
 
 /* print c */
 void	ft_print_c(t_flags *tab);
+void	ft_print_percent(t_flags *tab);
 /* print s */
 void	ft_print_s(t_flags *tab);
 /* print p */
@@ -59,6 +60,7 @@ void	ft_print_hexa(t_flags *tab, char *base);
 void	hexa_zero_padd(unsigned int num, int len, t_flags *tab, char *base);
 void	hexa_left_wdth(unsigned int num, int len, t_flags *tab, char *base);
 void	hexa_wdth(unsigned int num, int len, t_flags *tab, char *base);
+void	ft_hexa_flags(unsigned int num, t_flags *tab);
 /* others */
 int		ft_locate_format(char *s1, int c);
 int		precision_control(int len, t_flags *tab);

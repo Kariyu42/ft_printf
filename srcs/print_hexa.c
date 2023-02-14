@@ -6,13 +6,13 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 20:31:18 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 20:51:02 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:19:07 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_hexalen(unsigned long num)
+static int	ft_hexalen(unsigned long num)
 {
 	unsigned long	i;
 
@@ -33,14 +33,16 @@ void	ft_print_hexa(t_flags *tab, char *base)
 	unsigned int	num;
 
 	num = va_arg(tab->ap, unsigned int);
-	len = ft_hexalen(num);
-	if (tab->hash)
+	if (num == 0 && !tab->precision && tab->check_precision)
+		len = 0;
+	else
+		len = ft_hexalen(num);
+	if (tab->hash && num > 0)
 		tab->width -= 2;
-	if (tab->zero && !tab->precision)
+	if (tab->zero && !tab->check_precision)
 		hexa_zero_padd(num, len, tab, base);
 	else if (tab->minus)
 		hexa_left_wdth(num, len, tab, base);
 	else
 		hexa_wdth(num, len, tab, base);
-	
 }

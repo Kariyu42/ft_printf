@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:31:20 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 20:10:49 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:14:47 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void	uint_pad_zero(char *str, int len, t_flags *tab)
 	ft_check_addflags(0, tab);
 	while (++i < tab->width - len)
 		tab->len += write(1, "0", 1);
-	ft_putstr_fd(str, 1);
+	if (len > 0)
+		ft_putstr_fd(str, 1);
 	tab->len += len;
 }
 
@@ -39,7 +40,8 @@ static void	uint_printleft(char *str, int len, t_flags *tab)
 		tab->len += write(1, "0", 1);
 	if (!prec_pad)
 		ft_check_addflags(0, tab);
-	ft_putstr_fd(str, 1);
+	if (len > 0)
+		ft_putstr_fd(str, 1);
 	tab->len += len;
 	i = -1;
 	while (++i < area)
@@ -65,13 +67,14 @@ static void	uint_wdth(char *str, int len, t_flags *tab)
 		tab->len += write(1, "0", 1);
 	if (!prec_pad)
 		ft_check_addflags(0, tab);
-	ft_putstr_fd(str, 1);
+	if (len > 0)
+		ft_putstr_fd(str, 1);
 	tab->len += len;
 }
 
 static void	uint_flags(char *str, int len, t_flags *tab)
 {
-	if (tab->zero && !tab->precision)
+	if (tab->zero && !tab->check_precision)
 		uint_pad_zero(str, len, tab);
 	else if (tab->minus)
 		uint_printleft(str, len, tab);
@@ -87,7 +90,10 @@ void	ft_print_uint(t_flags *tab)
 
 	num = va_arg(tab->ap, unsigned int);
 	str = ft_itoa(num);
-	len = (int)ft_strlen(str);
+	if (num == 0 && !tab->precision && tab->check_precision)
+		len = 0;
+	else
+		len = (int)ft_strlen(str);
 	if (tab->plus || tab->space)
 		tab->width--;
 	uint_flags(str, len, tab);

@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:16:54 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 10:17:49 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:53:48 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ static void	ft_take_width(const char *format, t_flags *tab, int i)
 
 void	ft_get_width(const char *format, t_flags *tab, int i)
 {
+	tab->minus = 0;
+	tab->zero = 0;
+	tab->width = 0;
 	while (!ft_locate_format("cspdiuxX%", format[i]) && format[i] != '.')
 	{
 		if (format[i] == '-')

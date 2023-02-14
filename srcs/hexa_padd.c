@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 20:42:48 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 20:57:04 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:46:11 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	hexa_zero_padd(unsigned int num, int len, t_flags *tab, char *base)
 	int	i;
 
 	i = -1;
+	ft_hexa_flags(num, tab);
 	while (++i < tab->width - len)
 		tab->len += write(1, "0", 1);
-	ft_check_addflags(0, tab);
-	ft_base_convert(num, tab, base);
+	if (len > 0)
+		ft_base_convert(num, tab, base);
 }
 
 void	hexa_left_wdth(unsigned int num, int len, t_flags *tab, char *base)
@@ -33,13 +34,13 @@ void	hexa_left_wdth(unsigned int num, int len, t_flags *tab, char *base)
 	prec_pad = precision_control(len, tab);
 	area = tab->width - (prec_pad + len);
 	if (prec_pad > 0)
-		ft_check_addflags(0, tab);
+		ft_hexa_flags(num, tab);
 	while (++i < prec_pad)
 		tab->len += write(1, "0", 1);
 	if (!prec_pad)
-		ft_check_addflags(0, tab);
-	ft_base_convert(num, tab, base);
-	tab->len += len;
+		ft_hexa_flags(num, tab);
+	if (len > 0)
+		ft_base_convert(num, tab, base);
 	i = -1;
 	while (++i < area)
 		tab->len += write(1, " ", 1);
@@ -58,12 +59,12 @@ void	hexa_wdth(unsigned int num, int len, t_flags *tab, char *base)
 		tab->len += write(1, " ", 1);
 	i = -1;
 	if (prec_pad > 0)
-		ft_check_addflags(0, tab);
+		ft_hexa_flags(num, tab);
 	i = -1;
 	while (++i < prec_pad)
 		tab->len += write(1, "0", 1);
 	if (!prec_pad)
-		ft_check_addflags(0, tab);
-	ft_base_convert(num, tab, base);
-	tab->len += len;
+		ft_hexa_flags(num, tab);
+	if (len > 0)
+		ft_base_convert(num, tab, base);
 }

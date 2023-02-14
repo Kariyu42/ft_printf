@@ -6,13 +6,13 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:08:00 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 20:01:58 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:44:54 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lendigit(int n)
+int	ft_lendigit(unsigned long long n)
 {
 	int	i;
 
@@ -28,14 +28,12 @@ int	ft_lendigit(int n)
 char	*ft_itoa(unsigned long long n)
 {
 	int		i;
-	int		j;
 	char	*str;
 
 	i = 0;
 	if (!n)
 		return (ft_strdup("0"));
 	i = ft_lendigit(n);
-	j = i;
 	str = malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (0);
@@ -44,6 +42,7 @@ char	*ft_itoa(unsigned long long n)
 		str[0] = '-';
 		n *= -1;
 	}
+	str[i] = '\0';
 	i -= 1;
 	while (n)
 	{
@@ -51,7 +50,6 @@ char	*ft_itoa(unsigned long long n)
 		n = n / 10;
 		i--;
 	}
-	str[j] = '\0';
 	return (str);
 }
 

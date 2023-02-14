@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:50:49 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 09:57:54 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:45:43 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	hexa_len(unsigned long num)
 {
 	int	i;
-	
+
 	if (num == 0)
 		return (1);
 	i = 0;
@@ -50,7 +50,7 @@ static void	print_left_p(unsigned long num, int len, t_flags *tab)
 			tab->len += write(1, " ", 1);
 }
 
-static void print_wdth_p(unsigned long num, int len, t_flags *tab)
+static void	print_wdth_p(unsigned long num, int len, t_flags *tab)
 {
 	int	i;
 

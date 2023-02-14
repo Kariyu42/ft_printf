@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 23:33:08 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 19:51:53 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:46:24 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	add_zero_padd(char *tmp, int len, int sign, t_flags *tab)
 	if (tab->width > len)
 		while (++i < tab->width - len)
 			tab->len += write(1, "0", 1);
-	ft_putstr_fd(tmp, 1);
+	if (len > 0)
+		ft_putstr_fd(tmp, 1);
 	tab->len += len;
 }
 
@@ -40,7 +41,8 @@ static void	print_left_di(char *tmp, int len, int sign, t_flags *tab)
 		tab->len += write(1, "0", 1);
 	if (!prec_pad)
 		ft_check_addflags(sign, tab);
-	ft_putstr_fd(tmp, 1);
+	if (len > 0)
+		ft_putstr_fd(tmp, 1);
 	tab->len += len;
 	i = -1;
 	while (++i < area)
@@ -66,13 +68,14 @@ static void	print_wdth_di(char *tmp, int len, int sign, t_flags *tab)
 		tab->len += write(1, "0", 1);
 	if (!prec_pad)
 		ft_check_addflags(sign, tab);
-	ft_putstr_fd(tmp, 1);
+	if (len > 0)
+		ft_putstr_fd(tmp, 1);
 	tab->len += len;
 }
 
 static void	num_flags(char *tmp, int len, int sign, t_flags *tab)
 {
-	if (tab->zero && !tab->precision)
+	if (tab->zero && !tab->check_precision)
 		add_zero_padd(tmp, len, sign, tab);
 	else if (tab->minus)
 		print_left_di(tmp, len, sign, tab);
@@ -86,7 +89,7 @@ void	ft_print_di(t_flags *tab)
 	int			len;
 	int			sign;
 	char		*tmp;
-	
+
 	sign = 0;
 	num = va_arg(tab->ap, int);
 	if (num < 0)
@@ -95,7 +98,10 @@ void	ft_print_di(t_flags *tab)
 		num *= -1;
 	}
 	tmp = ft_itoa(num);
-	len = (int)ft_strlen(tmp);
+	if (num == 0 && !tab->precision && tab->check_precision)
+		len = 0;
+	else
+		len = (int)ft_strlen(tmp);
 	if (sign || tab->plus || tab->space)
 		tab->width--;
 	num_flags(tmp, len, sign, tab);

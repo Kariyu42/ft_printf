@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 21:44:10 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/11 22:30:30 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:36:23 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ void	ft_print_c(t_flags *tab)
 	char	c;
 
 	c = va_arg(tab->ap, int);
+	if (tab->minus)
+		print_leftc(c, tab);
+	else
+		print_wdthc(c, tab);
+}
+
+void	ft_print_percent(t_flags *tab)
+{
+	char	c;
+
+	c = '%';
 	if (tab->minus)
 		print_leftc(c, tab);
 	else

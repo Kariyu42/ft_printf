@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:30:21 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/13 20:16:53 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:12:01 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_flags	*ft_declare_tab(t_flags *tab)
 	tab->space = 0;
 	tab->width = 0;
 	tab->precision = 0;
+	tab->check_precision = 0;
 	return (tab);
 }
 
@@ -64,7 +65,7 @@ static void	ft_convert_format(char c, t_flags *tab)
 		ft_print_hexa(tab, "0123456789ABCDEF");
 	}
 	else if (c == '%')
-		tab->len += write(1, "%", 1);
+		ft_print_percent(tab);
 }
 
 static int	ft_parse_flag(t_flags *tab, const char *format, int i)
