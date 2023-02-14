@@ -6,7 +6,7 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:30:21 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/14 11:12:01 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:05:29 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ static int	ft_parse_flag(t_flags *tab, const char *format, int i)
 {
 	ft_get_width(format, tab, i);
 	ft_get_precision(format, tab, i);
+	tab->hash = 0;
+	tab->plus = 0;
+	tab->space = 0;
 	while (format[i] && !ft_locate_format("cspdiuxX%", format[i]))
 	{
 		if (format[i] == ' ')
