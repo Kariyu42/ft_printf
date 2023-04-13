@@ -6,7 +6,7 @@
 #    By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 12:15:28 by kquetat-          #+#    #+#              #
-#    Updated: 2023/02/13 20:58:41 by kquetat-         ###   ########.fr        #
+#    Updated: 2023/04/13 10:53:57 by kquetat-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,15 @@
 NAME		=	libftprintf.a
 LIBFT		=	libft/
 HEADER_F	=	includes/
+SRCS_PATH	=	srcs/
 
 ### C FILES ###
-SRCS	=	ft_printf.c ft_get_precision.c ft_get_width.c \
-			srcs/print_char.c srcs/print_str.c srcs/print_int.c \
-			srcs/print_addr.c srcs/add_numflags.c srcs/int_precision.c \
-			srcs/print_unsigned.c srcs/print_hexa.c srcs/hexa_padd.c
-			
+SRCS	=	${addprefix ${SRCS_PATH}, ft_get_precision.c ft_get_width.c \
+			print_char.c print_str.c print_int.c \
+			print_addr.c add_numflags.c int_precision.c \
+			print_unsigned.c print_hexa.c hexa_padd.c} \
+			ft_printf.c
+
 OBJS	=	$(SRCS:.c=.o)
 ### COMPILATION W/ FLAGS & OTHERS ###
 CC		= clang

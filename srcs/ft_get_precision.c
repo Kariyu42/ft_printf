@@ -6,11 +6,11 @@
 /*   By: kquetat- <kquetat-@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:00:08 by kquetat-          #+#    #+#             */
-/*   Updated: 2023/02/14 13:43:43 by kquetat-         ###   ########.fr       */
+/*   Updated: 2023/04/13 10:51:15 by kquetat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static void	ft_take_precision(const char *format, t_flags *tab, int i)
 {
